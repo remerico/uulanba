@@ -18,6 +18,8 @@ import org.json.JSONObject;
  */
 public class MainActivity extends Activity {
 
+    static final char DEGREE_SYMBOL = 0x00B0;
+
     OkHttpClient client = new OkHttpClient();
 
     View loadingView;
@@ -25,6 +27,7 @@ public class MainActivity extends Activity {
 
     TextView messageText;
     TextView regionText;
+    TextView temperatureText;
     TextView forecastText;
 
 
@@ -39,6 +42,7 @@ public class MainActivity extends Activity {
 
         messageText = (TextView) findViewById(R.id.message_text);
         regionText = (TextView) findViewById(R.id.region_text);
+        temperatureText = (TextView) findViewById(R.id.temperature_text);
         forecastText = (TextView) findViewById(R.id.forecast_text);
 
         new WeatherLoader().execute();
@@ -57,6 +61,7 @@ public class MainActivity extends Activity {
             messageText.setText(wd.isRainy() ? R.string.oo_tanga : R.string.hindi_gago);
             forecastText.setText(wd.condition);
             regionText.setText(wd.city + ", " + wd.region);
+            temperatureText.setText(wd.temperatureCelsius() + Character.toString(DEGREE_SYMBOL) + "C");
         }
         else {
             messageText.setText("Error");
