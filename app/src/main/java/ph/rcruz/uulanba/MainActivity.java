@@ -1,4 +1,4 @@
-package umuulanba.remerico.ph.umuulanba;
+package ph.rcruz.uulanba;
 
 import android.app.Activity;
 import android.os.AsyncTask;
